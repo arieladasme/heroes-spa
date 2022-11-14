@@ -24,7 +24,7 @@ export const Navbar = () => {
 
       <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
         <ul className="navbar-nav ml-auto">
-          <span className="nav-item nav-link text-info">Perro</span>
+          <span className="nav-item nav-link text-info">Pepe</span>
           <button className="nav-item nav-link btn">Logout</button>
         </ul>
       </div>
