@@ -2,13 +2,15 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import queryString from 'query-string'
 import { useForm } from '../../hooks/useForm'
 import { HeroCard } from '../components'
+import { getHeroesByName } from '../helpers'
 export const SearchPage = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
   const { q = '' } = queryString.parse(location.search)
+  const heroes = getHeroesByName(q)
 
-  const { searchText, onInputChange } = useForm({ searchText: '' })
+  const { searchText, onInputChange } = useForm({ searchText: q })
 
   const onSearchSubmit = (e) => {
     e.preventDefault() //evita fullrefresh
@@ -45,7 +47,9 @@ export const SearchPage = () => {
           <div className="alert alert-danger">
             No hero with <b>{q}</b>
           </div>
-          {/*  <HeroCard {...hero}/> */}
+          {heroes.map((hero) => (
+            <HeroCard {...hero} />
+          ))}
         </div>
       </div>
     </>
